@@ -1,7 +1,8 @@
-var map = require("through2-map");
+var through2 = require("through2");
 
-var upperCaseString = function(buffer){
-	this.push(buffer.toString().toUpperCase())
+var upperCaseString = function(buffer, encoding, next){
+	this.push(buffer.toString().toUpperCase());
+	next();
 }
 
-process.stdin.pipe(map(upperCaseString)).pipe(process.stdout)
+process.stdin.pipe(through2(upperCaseString)).pipe(process.stdout)
