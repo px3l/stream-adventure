@@ -5,4 +5,6 @@ var upperCaseString = function(buffer, encoding, next){
 	next();
 }
 
-process.stdin.pipe(through2(upperCaseString)).pipe(process.stdout)
+process.stdin
+	.pipe(through2(upperCaseString))
+	.pipe(process.stdout)
